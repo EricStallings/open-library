@@ -26,19 +26,14 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   // create functions that will dispatch action creators
   updateSS : text => {
-    // event.preventDefault();
-    // event.persist();
-    // console.log(`Line 28, Event is: `, event )
     dispatch(actions.updateSS(text))
-
   },
   updateBL : array => {
     dispatch(actions.updateBL(array))
   },
-
-  fetchWithSS : string => {
-    dispatch(actions.fetchWithSS(string))
-  }
+  // fetchWithSS : string => {
+  //   dispatch(actions.fetchWithSS(string))
+  // }
   // fetchBooks : 
 
 });
@@ -46,8 +41,6 @@ const mapDispatchToProps = dispatch => ({
 class MainContainer extends Component{
   constructor(props){
     super(props)
- 
-
   }
 
   render() {
