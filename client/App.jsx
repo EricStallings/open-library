@@ -3,6 +3,7 @@ import './styles.css';
 import HeaderContainer from './HeaderContainer.jsx'
 import BooksContainer from './BooksContainer.jsx'
 
+// Main application.
 
 class App extends Component {
   constructor(props) {
@@ -16,10 +17,12 @@ class App extends Component {
     this.onChange = this.onChange.bind(this)
   }
   
+  // Sets the state's Search Value property.
   onChange(event){
     this.setState({ searchValue: event.target.value });
   };
 
+  // converts the Search Value into a valid URL, submits fetch request to URL.
   handleSubmit(event){
     event.preventDefault();
 
@@ -49,6 +52,7 @@ class App extends Component {
 
   }
 
+  // Renders Header, Form, and BooksContainer components. 
   render() {
     return (
       <div className="App">

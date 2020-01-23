@@ -1,0 +1,5 @@
+Next steps to work on: 
+1. Remove the submit button and add auto-fetching and debounce form functionality.
+2. Convert the Form into a singular component. 
+3. Find a way to include a photo of a book's cover and add to book LI
+4. Find a way to remove duplicate books from the fetch request's response.
