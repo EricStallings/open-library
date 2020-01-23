@@ -1,32 +1,67 @@
-
-/**
- * ************************************
- *
- * @module  App.jsx
- * @author
- * @date 1/14/2020
- * @description Main APP component
- *
- * ************************************
- */
-
 import React, { Component } from 'react';
-import MainContainer from './components/containers/MainContainer.jsx';
-
 import './styles.css';
-// import Redux from 'redux'
-// import ReactDom from 'react-dom'
+import HeaderContainer from './HeaderContainer.jsx'
+import BooksContainer from './BooksContainer.jsx'
+
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchValue : '',
+      isSearching : false,
+      bookList : [],
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this)
+  }
+  
+  onChange(event){
+    this.setState({ searchValue: event.target.value });
+  };
+
+  handleSubmit(event){
+    event.preventDefault();
+
+    let URL = 'http://openlibrary.org/search.json?title='
+    const searchValueArray = this.state.searchValue.split(' ');
+    for (let i = 0; i < searchValueArray.length; i++){
+      URL += searchValueArray[i];
+      if (searchValueArray[i+1]) URL += '+'
+    }
+
+    fetch(URL)
+    .then(response => response.json())
+    .then(data => {
+
+      const newBookList = [];
+      const books = data.docs;
+      books.forEach((book)=>{
+        newBookList.push(book)
+        console.log(`Book: `,book)
+      })
+      this.setState({
+        ...this.state,
+        bookList: newBookList
+      })
+    })
+    .catch(err=> console.log(`The following error occured: `, err))
+
   }
 
   render() {
     return (
-      <div>
-        <MainContainer />
+      <div className="App">
+        <HeaderContainer/>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              <input type="text" value={this.state.value} onChange={this.onChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        <BooksContainer bookList={this.state.bookList}></BooksContainer>
       </div>
+      
     );
   }
 }
