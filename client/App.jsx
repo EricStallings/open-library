@@ -41,7 +41,6 @@ class App extends Component {
       const books = data.docs;
       books.forEach((book)=>{
         newBookList.push(book)
-        // console.log(`Book: `,book)
       })
       this.setState({
         ...this.state,
