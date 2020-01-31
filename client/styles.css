@@ -40,10 +40,10 @@ root{
 
 .book-li{
   flex: 1 0 20%;
-  height: 100px;
+  height: auto;
   background-color: azure;
   list-style-type: none;
-  margin: 10px 10px;
+  margin: 5px 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,8 +52,8 @@ root{
 }
 
 .book-container{
-    width: 80%;
-    height: 80%;
+    width: auto;
+    height: auto;
     background: lightblue;
     background-size: 400%;
   
@@ -69,9 +69,12 @@ root{
 }
 
 .book-subtitle{
-  font-size: 5px;
+  font-size: 8px;
 }
 
-
+.book-image{
+  height: 50%;
+  width: 50%;
+}
 
 

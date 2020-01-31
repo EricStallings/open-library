@@ -5,8 +5,8 @@ const BooksContainer = (props) => {
   const bookList = [];
 
   props.bookList.forEach((book)=>{
-  bookList.push(<Book title={book.title} subtitle={book.subtitle} />);
-
+    console.log(book.isbn)
+    bookList.push(<Book title={book.title} subtitle={book.subtitle}bookCoverID = {book.isbn[0]}/>);
   })
 
   return(
